@@ -5,9 +5,14 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import notificationRoutes from "./routes/notification.routes.js";
+<<<<<<< HEAD
 import adminRoutes from "./routes/admin.routes.js";
 import questionRoutes from "./routes/question.routes.js";
 // import commentRoutes from "./routes/comment.routes.js";
+=======
+import questionRoutes from "./routes/QuestionRoutes.js";
+import answerRoutes from "./routes/AnswerRoutes.js";
+>>>>>>> b8658ca (changes)
 
 const app = express();
 
@@ -26,8 +31,13 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/notifications", notificationRoutes);
+<<<<<<< HEAD
 app.use("/api/admin", adminRoutes);
 app.use("/api/questions", questionRoutes);
 // app.use("/api/comments", commentRoutes);
+=======
+app.use("/questions", questionRoutes);
+app.use("/answers", answerRoutes);
+>>>>>>> b8658ca (changes)
 
 export { app };
