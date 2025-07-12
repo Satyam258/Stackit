@@ -7,11 +7,12 @@ POST /auth/register
 Registers a new user and returns a token.
 
 Sample Request Body:
-{
-"username": "john_doe",
-"email": "john@example.com",
-"password": "securePassword123"
-}
+
+    {
+    "username": "john_doe",
+    "email": "john@example.com",
+    "password": "securePassword123"
+    }
 
 ## Login
 
@@ -21,10 +22,10 @@ Logs in an existing user and returns a JWT token.
 
 Sample Request Body:
 
-{
-"email": "john@example.com",
-"password": "securePassword123"
-}
+        {
+        "email": "john@example.com",
+        "password": "securePassword123"
+        }
 
 # User Routes
 
@@ -50,10 +51,11 @@ PATCH /users/me
 Requires: Bearer Token
 
 Sample Body:
-{
-"username": "johnny_updated",
-"email": "johnny@example.com"
-}
+
+        {
+        "username": "johnny_updated",
+        "email": "johnny@example.com"
+        }
 
 ## Update User Proficiencies
 
@@ -62,15 +64,73 @@ Requires: Bearer Token
 (Useful to associate user skills with tags)
 
 Sample Body:
-{
-"proficiencies": [
-{
-"tag": "64f29aa8fc13ae2a7e000003",
-"level": "expert"
-},
-{
-"tag": "64f29aa8fc13ae2a7e000004",
-"level": "intermediate"
-}
-]
-}
+
+        {
+        "proficiencies": [
+        {
+        "tag": "64f29aa8fc13ae2a7e000003",
+        "level": "expert"
+        },
+        {
+        "tag": "64f29aa8fc13ae2a7e000004",
+        "level": "intermediate"
+        }
+        ]
+        }
+
+
+# Notification API Documentation
+
+## Create Notification
+POST /
+
+Creates a new notification (used internally when someone comments, answers, etc.).
+
+ Request Body
+
+    {
+    "recipient": "64f291c09fcd3b2a4c9ab123",
+    "type": "answer",
+    "message": "Alice answered your question on Node.js",
+    "link": "/questions/64f5c2e98a3d12e1cd99ab88#answer64f5c331"
+    }
+
+## Get Logged-in User's Notifications
+GET /
+
+Fetches all notifications for the authenticated user, sorted by createdAt descending.
+
+Response
+
+    {
+    "notifications": [
+        {
+        "_id": "64f8d6a4fc13ae456789abcd",
+        "recipient": "64f291c09fcd3b2a4c9ab123",
+        "type": "answer",
+        "message": "Alice answered your question on Node.js",
+        "link": "/questions/64f5c2e98a3d12e1cd99ab88#answer64f5c331",
+        "isRead": false,
+        "createdAt": "2025-07-12T12:30:00.000Z"
+        }
+    ]
+    }
+
+
+## Mark Notification as Read
+PATCH /:notificationId/read
+
+Marks a specific notification as read.
+
+ Example URL
+
+     PATCH /64f8d6a4fc13ae456789abcd/read
+
+##  Delete Notification
+DELETE /:notificationId
+
+Deletes a specific notification.
+
+ Example URL
+
+    DELETE /64f8d6a4fc13ae456789abcd
