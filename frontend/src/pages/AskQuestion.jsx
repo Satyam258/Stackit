@@ -64,13 +64,13 @@ function AskQuestion() {
           className="mt-4"
           placeholder="Select relevant tags"
         />
-
+        <div className="flex justify-center items-center">
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           Submit Question
         </button>
+        </div>
       </form>
     </div>
   )

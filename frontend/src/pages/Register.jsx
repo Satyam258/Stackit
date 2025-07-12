@@ -29,8 +29,8 @@ function Register() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow">
-      <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded shadow">
+      <h2 className="text-2xl font-bold mb-4 text-center">REGISTER</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -43,7 +43,12 @@ function Register() {
         <input
           type="email"
           placeholder="Email"
-          className="w-full border p-2 rounded"
+          className=" focus:border-sky-500 focus:outline
+          focus:outline-sky-500 focus:invalid:border-pink-500
+          focus:invalid:outline-pink-500 disabled:border-gray-200
+          disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none
+          dark:disabled:border-gray-700 dark:disabled:bg-gray-800/20
+          w-full border p-2 rounded"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -58,8 +63,7 @@ function Register() {
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
           Create Account
         </button>
       </form>
