@@ -5,6 +5,7 @@ import QuestionDetails from "./pages/QuestionDetails"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Navbar from "./components/Navbar"
+import AdminDashboard from "./pages/AdminDashboard"
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element ={<Login/>}/>
       <Route path="/question/:id" element ={<QuestionDetails/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/admin" element={<AdminDashboard/>} />
     </Routes>
     </>
     
